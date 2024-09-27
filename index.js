@@ -7,8 +7,6 @@ console.log(`The driver's name is ${hacker1}`);
 console.log(`The navigator's name is ${hacker2}`);
 
 
-
-
 // Iteration 2: Conditionals
 
 if (hacker1.length > hacker2.length) {
@@ -18,8 +16,6 @@ if (hacker1.length > hacker2.length) {
 } else {
     console.log(`Wow, you both have equally long names, ${hacker1.length} characters!`);
 }
-
-
 
 
 // Iteration 3: Loops
@@ -107,14 +103,12 @@ ligula nulla, vehicula quis nunc sit amet, hendrerit dapibus enim. Nulla pharetr
 Nam volutpat vel nulla et ullamcorper. Quisque volutpat rutrum nunc at vestibulum.`;
 
 
-
 // Count words
 
 const words = longText.split(' '); 
 const wordCount = words.length;
 
 console.log(wordCount);
-
 
 
 // Count number of "et"
