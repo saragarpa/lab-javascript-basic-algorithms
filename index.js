@@ -6,75 +6,62 @@ const hacker2 = "Sara";
 console.log(`The driver's name is ${hacker1}`);
 console.log(`The navigator's name is ${hacker2}`);
 
-
 // Iteration 2: Conditionals
 
 if (hacker1.length > hacker2.length) {
-    console.log(`The driver has the longest name, it has ${hacker1.length} characters.`);
+  console.log(
+    `The driver has the longest name, it has ${hacker1.length} characters.`
+  );
 } else if (hacker2.length > hacker1.length) {
-    console.log(`It seems that the navigator has the longest name, it has ${hacker2.length} characters.`);
+  console.log(
+    `It seems that the navigator has the longest name, it has ${hacker2.length} characters.`
+  );
 } else {
-    console.log(`Wow, you both have equally long names, ${hacker1.length} characters!`);
+  console.log(
+    `Wow, you both have equally long names, ${hacker1.length} characters!`
+  );
 }
 
-
 // Iteration 3: Loops
-
 
 // 3.1 Print the characters of the driver's name, separated by space, and in capital letters
 
 let hackerSpace = "";
 
 for (let i = 0; i < hacker1.length; i++) {
-    const hacker1Char = hacker1[i].toUpperCase();
-    hackerSpace += hacker1Char;
+  const hacker1Char = hacker1[i].toUpperCase();
+  hackerSpace += hacker1Char;
 
-    if (i < hacker1.length - 1) {
-        hackerSpace += " ";
-    }
+  if (i < hacker1.length - 1) {
+    hackerSpace += " ";
+  }
 }
 
 console.log(hackerSpace);
-
-
 
 // 3.2 Print all the characters of the navigator's name in reverse order
 
 let reverseName = "";
 
 for (let i = hacker2.length - 1; i >= 0; i--) {
-    const hacker2Char = hacker2[i];
-    reverseName += hacker2Char;
+  const hacker2Char = hacker2[i];
+  reverseName += hacker2Char;
 }
 
 console.log(reverseName);
 
-
-
 // 3.3 Depending on the lexicographic order of the strings, print
 
-for (let i = 0; i < hacker1.length && i < hacker2.length; i++) {
-    const hacker1Char = hacker1[i];
-    const hacker2Char = hacker2[i];
-
-    if (hacker1Char < hacker2Char) {
-        console.log("The driver's name goes first.");
-        break;
-    } else if (hacker1Char > hacker2Char) {
-        console.log("Yo, the navigator goes first, definitely.");
-        break;
-    }
+const comparison = hacker1.localeCompare(hacker2);
+if (comparison < 0) {
+  console.log("The driver's name goes first.");
+} else if (comparison > 0) {
+  console.log("Yo, the navigator goes first, definitely.");
+} else {
+  console.log("What?! You both have the same name?");
 }
-
-if (hacker1.length === hacker2.length) {
-    console.log("What?! You both have the same name?");
-}
-
-
-
 
 // Bonus Time!
-
 
 // Bonus 1
 
@@ -102,26 +89,61 @@ Nam id nisl quis turpis ultricies sollicitudin vitae auctor dolor. Sed iaculis l
 ligula nulla, vehicula quis nunc sit amet, hendrerit dapibus enim. Nulla pharetra nisi in metus aliquet ultrices. 
 Nam volutpat vel nulla et ullamcorper. Quisque volutpat rutrum nunc at vestibulum.`;
 
-
 // Count words
 
-const words = longText.split(' '); 
+const words = longText.split(" ");
 const wordCount = words.length;
 
 console.log(wordCount);
 
-
 // Count number of "et"
 
-let etCount = 0; 
+let etCount = 0;
 
 for (let i = 0; i < longText.length - 1; i++) {
-    const char = longText[i];
-    const nextChar = longText[i + 1];
+  const char = longText[i];
+  const nextChar = longText[i + 1];
 
-    if (char === "e" && nextChar === "t") {
-        etCount++;
-    } 
+  if (char === "e" && nextChar === "t") {
+    etCount++;
+  }
 }
 
-console.log(etCount); 
+console.log(etCount);
+
+// Bonus 2
+
+function isPalindrome(str) {
+  let left = 0;
+  let right = str.length - 1;
+
+  while (left < right) {
+    // Ignore non-alphabetic characters from the start
+    let leftChar = str[left].toLowerCase();
+    while (left < right && !(leftChar >= "a" && leftChar <= "z")) {
+      left++;
+      leftChar = str[left].toLowerCase();
+    }
+
+    // Ignore non-alphabetic characters from the end
+    let rightChar = str[right].toLowerCase();
+    while (left < right && !(rightChar >= "A" && rightChar <= "z")) {
+      right--;
+      rightChar = str[right].toLowerCase();
+    }
+
+    // Compare the characters
+    if (leftChar !== rightChar) {
+      return false;
+    }
+
+    // Move towards the center
+    left++;
+    right--;
+  }
+
+  return true;
+}
+
+console.log(isPalindrome("A man, a plan, a canal: Panama")); // true
+console.log(isPalindrome("This is not a palindrome")); // false
